@@ -1,5 +1,5 @@
 {
-  "name": "portfolio",
+  "name": "challenge",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,12 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/LauraMont/Portfolio-Automation.git"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LauraMont/Portfolio-Automation/issues"
-  },
-  "homepage": "https://github.com/LauraMont/Portfolio-Automation#readme",
   "devDependencies": {
     "cypress": "12.0.0"
   }

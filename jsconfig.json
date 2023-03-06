@@ -1,0 +1,12 @@
+{
+    "include": ["cypress/**/*.js"],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "types": [
+			"cypress",
+		],
+        "paths": {
+            "@pages/*": ["./cypress/support/pages/*"]
+        }
+    }
+}
