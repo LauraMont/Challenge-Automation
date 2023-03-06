@@ -1,7 +1,7 @@
 import {login as Login} from '@pages/Login.Page'
 import {inv} from '@pages/Inventory.Page'
 import {cart} from '@pages/ShopingCart.Page'
-const {login, endpoint} = Cypress.env('swagLabs')
+const {login, endpoint} = Cypress.env('swagLabs')  
 
 describe('US GX-9779 | TS: ✅SwagLabs | SCP | Remover producto del Carrito de Compras',()=>{
     beforeEach("Usuario inicia sesion en la pagina SwagLabs",()=>{

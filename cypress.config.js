@@ -1,29 +1,24 @@
 import { defineConfig } from "cypress";
+import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
 
-
+async function setupNodeEvents(on,config){
+	on(
+		'file:preprocessor',
+		createBundler()
+	);
+	//Make sure to return the config object as ir might have been modifeed by the plugin
+	return config;
+}
 
 export default defineConfig({
 	e2e: {
-		setupNodeEvents(on, config) {
-		// implement node event listeners here
+			setupNodeEvents,
+			specPattern:[
+				'cypress/e2e/**/*.cy.*'
+			],
 		},
-	},
-	env: {
+	env:{
 		baseUrl: 'https://www.saucedemo.com',
-		AdminUser: {
-			username: 'Admin',
-			password: 'admin123',
-		},
-		endpoint: {
-			authLogin: '/auth/login',
-			dashboardIndex: '/dashboard/index',
-			signUp: 'https://coderbyte.com/sl',
-		},
-		user: {
-			username: 'upexTesting',
-			email: 'sai@upextesting.com',
-			password: '1234567',
-		},
 		swagLabs: {
 			endpoint: {
 				inventory: '/inventory.html',
