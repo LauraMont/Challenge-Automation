@@ -1,4 +1,4 @@
-import {login} from '../../../support/pages/Login.Page'
+import {login} from '@pages/Login.Page'
 //import {login} from '../../../support/pages/Login.Page'
 
 const baseUrl = Cypress.env('baseUrl');

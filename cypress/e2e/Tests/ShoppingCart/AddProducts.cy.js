@@ -3,7 +3,7 @@ import {inv} from '@pages/Inventory.Page'
 import {cart} from '@pages/ShopingCart.Page'
 const {login, endpoint} = Cypress.env('swagLabs')  
 
-describe('US GX-9779 | TS: ✅SwagLabs | SCP | Remover producto del Carrito de Compras',()=>{
+describe('Agregar productos al carrito de compras',()=>{
     beforeEach("Usuario inicia sesion en la pagina SwagLabs",()=>{
         //Ir a swaglabs
         cy.visit('https://www.saucedemo.com/ ') 
@@ -14,21 +14,33 @@ describe('US GX-9779 | TS: ✅SwagLabs | SCP | Remover producto del Carrito de C
         Login.submitLogin()
         cy.url().should('include',endpoint.inventory)
     })
-    it("9780 | TC1: Validar agregar un producto al SC",()=>{
-        //Agregar un producto y almacenar info
+    it("TC1: Validar agregar un producto al SC",()=>{
+        //Agregar un producto 
         inv.addOneProduct()
+        //Almacenar info de producto
+        cy.get('[data-test*="remove"]').parent().siblings().within(()=>{
+            cy.get('.inventory_item_name').then((el)=>{
+                //Intento de guardar el texto
+                let title = el.text()
+                console.log(title)
+                Cypress.env('title',title)
+            })
+        })
+        let title = Cypress.env('title') 
+        console.log (title)
         //Validar icono en SC
         cart.get.quantityProducts().should('have.text','1')
         //Ir al SC y validar cards 
         cart.goToSC()
         cy.url().should('include',endpoint.cart)
         cy.url().should('include','cart')
+        cy.get('.cart_item').should('be.visible')
     })
-    it('9780  | TC2: Validar agregar mas de un producto al SC',()=>{
+    it('TC2: Validar agregar mas de un producto al SC',()=>{
         inv.get.addProduct().then((products)=>{
             //Agregar mas de un producto y almacenar info
-            //Genera un numero random del 1 a la cantidad de elementos disponibles (6)
-            let x = Math.floor(Math.random() * products.length + 1 ) 
+            //Genera un numero random del 2 a la cantidad de elementos disponibles (6)
+            let x = Math.floor(Math.random() * (products.length -1 ) + 2 )
             inv.addProducts(x) 
             //Validar icono en SC
             cart.get.quantityProducts().should('have.text',x) 
@@ -36,6 +48,7 @@ describe('US GX-9779 | TS: ✅SwagLabs | SCP | Remover producto del Carrito de C
             cart.goToSC()
             cy.url().should('include',endpoint.cart)
             cy.url().should('include','cart')
+            cy.get('.cart_item').should('have.length',x)
         })        
     })
 })
