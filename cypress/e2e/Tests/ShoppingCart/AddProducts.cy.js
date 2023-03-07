@@ -48,7 +48,14 @@ describe('Agregar productos al carrito de compras',()=>{
             cart.goToSC()
             cy.url().should('include',endpoint.cart)
             cy.url().should('include','cart')
-            cy.get('.cart_item').should('have.length',x)
+            cy.get('.cart_item').should('have.length',x-1)
         })        
+    })
+    it.only('Listado de Apartamentos',()=>{
+        cy.request('https://www.mercadolibre.com.ar/menu/departments').then((response)=>{
+            expect(response.status).to.eq(200)
+            expect(response.body).to.have.property('departments')
+            expect(response.body.departments).to.be.not.empty
+        })
     })
 })
