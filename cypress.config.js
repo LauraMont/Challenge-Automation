@@ -13,6 +13,11 @@ async function setupNodeEvents(on,config){
 export default defineConfig({
 	// Whether Cypress will record a video of the test run when running on headless:
 	video: false,
+	reporter: 'junit',
+	reporterOptions: {
+		mochaFile: 'results/Report.xml',
+		toConsole: true,
+	},
 	e2e: {
 			setupNodeEvents,
 			specPattern:[

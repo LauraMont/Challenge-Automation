@@ -17,17 +17,6 @@ describe('Agregar productos al carrito de compras',()=>{
     it("TC1: Validar agregar un producto al SC",()=>{
         //Agregar un producto 
         inv.addOneProduct()
-        //Almacenar info de producto
-        cy.get('[data-test*="remove"]').parent().siblings().within(()=>{
-            cy.get('.inventory_item_name').then((el)=>{
-                //Intento de guardar el texto
-                let title = el.text()
-                console.log(title)
-                Cypress.env('title',title)
-            })
-        })
-        let title = Cypress.env('title') 
-        console.log (title)
         //Validar icono en SC
         cart.get.quantityProducts().should('have.text','1')
         //Ir al SC y validar cards 
@@ -51,7 +40,7 @@ describe('Agregar productos al carrito de compras',()=>{
             cy.get('.cart_item').should('have.length',x-1)
         })        
     })
-    it.only('Listado de Apartamentos',()=>{
+    it('TC: Listado de Apartamentos',()=>{
         cy.request('https://www.mercadolibre.com.ar/menu/departments').then((response)=>{
             expect(response.status).to.eq(200)
             expect(response.body).to.have.property('departments')

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress open",
-    "cy:run:chrome": "cypress run --browser chrome",
-    "cy:run:edge": "cypress run --browser edge"
+    "cy:run:chrome": "cypress run --browser chrome --reporter junit",
+    "cy:run:edge": "cypress run --browser edge --reporter junit"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   "license": "ISC",
   "devDependencies": {
     "@bahmutov/cypress-esbuild-preprocessor": "2.2.0",
-    "cypress": "12.0.0"
+    "cypress": "12.0.0",
+    "cypress-multi-reporters": "^1.6.2",
+    "mocha-junit-reporter": "^2.2.0"
   }
 }
