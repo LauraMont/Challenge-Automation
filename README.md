@@ -1,6 +1,6 @@
 # Challenge Automation
 
-_Se realizaron los casos de pruebas necesarios para validar todos los escenarios posibles sobre las funcionalidades “Inicio de sesión” y “Agregado de productos al carrito de compras” de la web_*[Swaglabs] (https://www.saucedemo.com/) 
+_Se realizaron los casos de pruebas necesarios para validar todos los escenarios posibles sobre las funcionalidades “Inicio de sesión” y “Agregado de productos al carrito de compras” de la web_ *[Swaglabs](https://www.saucedemo.com/) 
 
 ## Comenzando 🚀
 
@@ -28,7 +28,7 @@ _Inicializar npm_
 npm init
 ```
 
-_instala todas las dependencias_
+_Instala todas las dependencias_
 
 ```
 npm install
@@ -38,4 +38,3 @@ _Ejecutar Cypress_
 ```
 npm test
 ```
-
